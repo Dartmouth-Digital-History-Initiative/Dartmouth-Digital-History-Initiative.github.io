@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>DDHI: Visualization of 6 Interviews</title>
+
+<style>
+#map {
+    width: 960px;
+    height:500px;
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+<link rel='stylesheet' type='text/css' href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css'>
+<link rel='stylesheet' type='text/css' href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css'>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+
+</head>
+
+<body>
+
+
+
+<div id="map"></div>
+
+
+<script>
+var map = L.map('map').setView([35.826314, -21.389297], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var layerControl = L.control.layers().addTo(map);
+
+var data = omnivore.csv('https://raw.githubusercontent.com/Dartmouth-Digital-History-Initiative/TEI-Encoding/master/data-viz/placeName/six_interviews_placeName.csv');
+
+var hodesMarkers = L.markerClusterGroup();
+var kendallMarkers = L.markerClusterGroup();
+var lovelyMarkers = L.markerClusterGroup();
+var rutterMarkers = L.markerClusterGroup();
+var straussMarkers = L.markerClusterGroup();
+var zienMarkers = L.markerClusterGroup();
+
+layerControl.addOverlay(hodesMarkers, 'Paul Hodes');
+layerControl.addOverlay(kendallMarkers, 'Glen Kendall');
+layerControl.addOverlay(lovelyMarkers, 'Beirne Lovely');
+layerControl.addOverlay(rutterMarkers, 'Jeremy Rutter');
+layerControl.addOverlay(straussMarkers, 'Dona Strauss');
+layerControl.addOverlay(zienMarkers, 'Jimmy Zien');
+
+data.on('ready', function() {
+  gHodes = L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Hodes';
+    }
+});
+  gKendall = L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Kendall';
+    }
+  });
+  gLovely = L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Lovely';
+    }
+  });
+  gRutter =  L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Rutter';
+    }
+  });
+  gStrauss =  L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Strauss';
+    }
+  });
+  gZien =  L.geoJson(data.toGeoJSON(), {
+    filter: function(feature, layer) {
+      return feature.properties.Source == 'Zien';
+    }
+  });
+
+  hodesMarkers.addLayer(gHodes);
+  kendallMarkers.addLayer(gKendall);
+  lovelyMarkers.addLayer(gLovely);
+  rutterMarkers.addLayer(gRutter);
+  straussMarkers.addLayer(gStrauss);
+  zienMarkers.addLayer(gZien);
+
+  map.addLayer(hodesMarkers);
+  map.addLayer(kendallMarkers);
+  map.addLayer(lovelyMarkers);
+  map.addLayer(rutterMarkers);
+  map.addLayer(straussMarkers);
+  map.addLayer(zienMarkers);
+});
+
+</script>
+
+</body>
+
+</html>

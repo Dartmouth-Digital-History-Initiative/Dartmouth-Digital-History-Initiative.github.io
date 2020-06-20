@@ -4,7 +4,7 @@
 
 <head>
 
-<title>DDHI placeName</title>
+<title>DDHI Strauss placeName</title>
 
 <style>
 #map {
@@ -16,7 +16,8 @@
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
 <link rel='stylesheet' type='text/css' href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css'>
-<link rel='stylesheet' type='text/css' href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css'>   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+<link rel='stylesheet' type='text/css' href='https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css'>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
@@ -32,9 +33,9 @@
 
 
 <script>
-var map = L.map('map').setView([43.708392, -72.289263], 4);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+var map = L.map('map').setView([35.826314, -21.389297], 2);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 }).addTo(map);
 
 var data = omnivore.csv('https://raw.githubusercontent.com/Dartmouth-Digital-History-Initiative/TEI-Encoding/master/data-viz/placeName/strauss_placeName.csv');

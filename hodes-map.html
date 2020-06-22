@@ -45,6 +45,7 @@ map.addLayer(markers);
 
 data.on('ready', function(){
   markers.addLayer(data);
+  marker.bindPopup(marker.toGeoJSON().properties.Name);
 });
 
 

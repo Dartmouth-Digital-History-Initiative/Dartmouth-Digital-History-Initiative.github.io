@@ -59,32 +59,32 @@ layerControl.addOverlay(zienMarkers, 'Jimmy Zien');
 data.on('ready', function() {
   gHodes = L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Hodes';
+      return feature.properties.source == 'Hodes';
     }
 });
   gKendall = L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Kendall';
+      return feature.properties.source == 'Kendall';
     }
   });
   gLovely = L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Lovely';
+      return feature.properties.source == 'Lovely';
     }
   });
   gRutter =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Rutter';
+      return feature.properties.source == 'Rutter';
     }
   });
   gStrauss =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Strauss';
+      return feature.properties.source == 'Strauss';
     }
   });
   gZien =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
-      return feature.properties.Source == 'Zien';
+      return feature.properties.source == 'Zien';
     }
   });
 

@@ -44,11 +44,12 @@ var markers = L.markerClusterGroup();
 map.addLayer(markers);
 
 data.on('ready', function(){
+  data.eachLayer(function(marker) {
+    marker.bindPopup(marker.toGeoJSON().properties.Name);
+  });
+
   markers.addLayer(data);
-  marker.bindPopup(marker.toGeoJSON().properties.Name);
 });
-
-
 
 </script>
 

@@ -61,31 +61,43 @@ data.on('ready', function() {
     filter: function(feature, layer) {
       return feature.properties.source == 'Hodes';
     }
-});
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
+  });
   gKendall = L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
       return feature.properties.source == 'Kendall';
     }
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
   });
   gLovely = L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
       return feature.properties.source == 'Lovely';
     }
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
   });
   gRutter =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
       return feature.properties.source == 'Rutter';
     }
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
   });
   gStrauss =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
       return feature.properties.source == 'Strauss';
     }
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
   });
   gZien =  L.geoJson(data.toGeoJSON(), {
     filter: function(feature, layer) {
       return feature.properties.source == 'Zien';
     }
+  }).eachLayer(function(marker) {
+      marker.bindPopup(marker.feature.properties.name);
   });
 
   hodesMarkers.addLayer(gHodes);
